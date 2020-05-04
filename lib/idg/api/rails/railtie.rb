@@ -5,7 +5,7 @@ module Idg
 
         # Register generators
         config.app_generators do
-          require "#{ File.dirname __dir__ }/generators/itia/itia_generator.rb"
+          require "#{ File.dirname __dir__ }/generators/itia/itia_scaffold_generator.rb"
         end
 
       end
