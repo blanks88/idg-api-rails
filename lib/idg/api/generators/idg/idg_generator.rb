@@ -1,7 +1,7 @@
-require 'rails/generators/rails/scaffold_controller/scaffold_controller_generator'
 require 'rails/generators'
+require 'rails/generators/rails/scaffold_controller/scaffold_controller_generator'
 
-class IdgGenerator < Rails::Generators::ScaffoldControllerGenerator
+class IDGGenerator < Rails::Generators::ScaffoldControllerGenerator
   # source_root File.expand_path('templates', __dir__)
 
 
