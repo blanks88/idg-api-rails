@@ -1,0 +1,11 @@
+Description:
+    Generates CRUD services for model inherited from IDG service
+
+Example:
+    rails generate idg Thing
+
+    This will create:
+        app/services/{PLURALIZED_MODEL}/query_service.rb
+        app/services/{PLURALIZED_MODEL}/insert_service.rb
+        app/services/{PLURALIZED_MODEL}/update_service.rb
+        app/services/{PLURALIZED_MODEL}/delete_service.rb

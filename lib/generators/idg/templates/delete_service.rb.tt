@@ -1,0 +1,35 @@
+#
+# Sample to implement:
+# ´´´
+#      <%= controller_class_name %>::DeleteService
+#         .new(:params)
+#         .execute do |r|
+#       ...your code here
+#     end
+# ´´´
+#
+<% module_namespacing do -%>
+  class <%= controller_class_name %>::DeleteService < ApplicationFindService
+
+    def initialize(id)
+      super(<%= controller_class_name %>, id)
+    end
+
+    def execute(*args, &block)
+
+      ActiveRecord::Base.transaction do
+        @subject.destroy
+      rescue ActiveRecord::InvalidForeignKey => e
+        @subject.errors.add(:id, 'Linked references found')
+      rescue StandardError => e
+        @subject.errors.add(:id, e.to_s)
+      ensure
+        yield(@subject) if block.present?
+      end
+
+      @subject
+    end
+  end
+
+<% end -%>
+

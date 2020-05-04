@@ -1,0 +1,27 @@
+#
+# Sample to implement:
+# ´´´
+#      V1::Sal::Clients::QueryService
+#         .new(params)
+#         .execute do |query|
+#       ...your code here
+#     end
+# ´´´
+#
+module V1
+  module Sal
+    class Clients::QueryService < ApplicationCatalogQueryService
+      def initialize(tenant, params)
+        super((tenant.parent || tenant).sal_clients, params)
+        @query_columns << 'supplier_code'
+      end
+
+      def execute(*args, &block)
+        @query = @query.where(classification: @params[:classification]) if @params[:classification].present?
+
+        super(*args, &block)
+      end
+
+    end
+  end
+end

@@ -1,0 +1,32 @@
+#
+# Sample to implement:
+# ´´´
+#      V1::Sal::Clients::InsertService
+#         .new(:params)
+#         .execute do |r|
+#       ...your code here
+#     end
+# ´´´
+#
+module V1
+  module Sal
+    class Clients::InsertService < ApplicationService
+      attr_reader :subject
+
+      def initialize(tenant, params)
+        @subject = tenant.sal_clients.new params
+      end
+
+      def execute(*args, &block)
+        ActiveRecord::Base.transaction do
+          @subject.save
+        rescue StandardError => e
+          @subject.errors.add(:id, e.to_s)
+          raise ActiveRecord::Rollback
+        ensure
+          yield(@subject) if block.present?
+        end
+      end
+    end
+  end
+end

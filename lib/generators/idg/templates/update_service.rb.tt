@@ -1,0 +1,33 @@
+#
+# Sample to implement:
+# ´´´
+#      V1::Sal::Clients::UpdateService
+#         .new(:params)
+#         .execute do |r|
+#       ...your code here
+#     end
+# ´´´
+#
+module V1
+  module Sal
+    class Clients::UpdateService < ApplicationFindService
+      attr_reader :new_attrs
+
+      def initialize(tenant, id, params)
+        super (tenant.parent || tenant).sal_clients, id
+        @new_attrs = params
+      end
+
+      def execute(*args, &block)
+        ActiveRecord::Base.transaction do
+          @subject.update(@new_attrs)
+        rescue StandardError => e
+          @subject.errors.add(:id, e.to_s)
+          raise ActiveRecord::Rollback
+        ensure
+          yield(@subject) if block.present?
+        end
+      end
+    end
+  end
+end
