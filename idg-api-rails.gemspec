@@ -7,17 +7,17 @@ require "idg/api/rails/version"
 Gem::Specification.new do |spec|
   spec.name        = "idg-api-rails"
   spec.version     = Idg::Api::Rails::VERSION
-  spec.authors     = ["Manolo Martinez"]
-  spec.email       = ["rosso.neeri@gmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Idg::Api::Rails."
-  spec.description = "TODO: Description of Idg::Api::Rails."
+  spec.authors     = ["ITIA DIGITAL"]
+  spec.email       = ["manolo@itia.mx"]
+  spec.homepage    = "https://github.com/manolo07/idg-api-rails"
+  spec.summary     = "Rails plugin for ITIA DIGITAL projects."
+  spec.description = "Rails plugin for ITIA DIGITAL projects"
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = "https://mygemserver.itia.mx"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
