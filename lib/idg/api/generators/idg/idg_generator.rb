@@ -1,4 +1,4 @@
-# require 'rails/generators/rails/scaffold_controller/scaffold_controller_generator'
+require 'rails/generators/rails/scaffold_controller/scaffold_controller_generator'
 require 'rails/generators'
 
 class IdgGenerator < Rails::Generators::ScaffoldControllerGenerator
