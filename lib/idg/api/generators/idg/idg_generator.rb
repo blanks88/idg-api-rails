@@ -6,6 +6,9 @@ module Rails
     class IdgGenerator < Rails::Generators::ScaffoldControllerGenerator
       source_root File.expand_path("../templates", __FILE__)
 
+      remove_hook_for :template_engine
+      remove_hook_for :helper
+
       def create_controller_files
         # Controller generator
         if options.api?
