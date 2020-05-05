@@ -7,12 +7,13 @@ module Rails
 
       def create_controller_files
         idg_root = File.expand_path('templates', __dir__)
+        puts idg_root
 
         if options.api?
           puts 'It`s not an Rails API, so only services generated'
           super
         else
-          template "#{idg_root}/api_controller.rb.erb", File.join("app/controllers", controller_class_path, "#{controller_file_name}_controller.rb")
+          template "api_controller.rb.erb", File.join("app/controllers", controller_class_path, "#{controller_file_name}_controller.rb")
         end
 
 
