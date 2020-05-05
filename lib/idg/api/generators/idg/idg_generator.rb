@@ -4,9 +4,10 @@ require 'rails/generators/rails/scaffold_controller/scaffold_controller_generato
 module Rails
   module Generators
     class IdgGenerator < Rails::Generators::ScaffoldControllerGenerator
-      idg_root = File.expand_path('templates', __dir__)
 
       def create_controller_files
+        idg_root = File.expand_path('templates', __dir__)
+
         if options.api?
           puts 'It`s not an Rails API, so only services generated'
           super
