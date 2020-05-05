@@ -12,10 +12,10 @@ module Rails
           puts 'It`s not an Rails API, so only services generated'
           super
         else
-          template "api_controller.rb.erb", File.join("app/controllers", controller_class_path, "#{controller_file_name}_controller.rb")
+          template "api_controller.rb.tt", File.join("app/controllers", controller_class_path, "#{controller_file_name}_controller.rb")
         end
 
-        template "delete_service.rb.erb", File.join("app/services", controller_class_path, "#{controller_file_name}_delete_service.rb")
+        template "delete_service.rb.tt", File.join("app/services", controller_class_path, "#{controller_file_name}_delete_service.rb")
       end
 
     end
